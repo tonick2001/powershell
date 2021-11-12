@@ -1,15 +1,15 @@
 Function RDP_Resetfailure($server)
 {
     $ts = qwinsta /server:$server
-    $td = $ts | where { ($_ -like "*Disc*" -or $_ -like "*Р”РёСЃРє*" -or $_ -like "*РЃР±Р„*") -and $_ -notlike "*services*" -and $_ -notlike "*РђРґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂ*" -and $_ -notlike "*Administrator1C*" -and  $_ -notlike "*Р‚В¤В¬РЃВ­РЃР±РІР°В РІВ®Р°*"}
-    $tdselect = $td # Р”Р»СЏ РѕС‚Р»Р°РґРєРё РёР»Рё РІРЅРµСЃРµРЅРёСЏ РІ Р»РѕРі: Login Id State
+    $td = $ts | where { ($_ -like "*Disc*" -or $_ -like "*Диск*" -or $_ -like "*ЁбЄ*") -and $_ -notlike "*services*" -and $_ -notlike "*Администратор*" -and $_ -notlike "*Administrator1C*" -and  $_ -notlike "*Ђ¤¬Ё­Ёбва в®а*"}
+    $tdselect = $td # Для отладки или внесения в лог: Login Id State
     
     foreach ($session in $td | Select-String '\s\d+\s')
     {
         $ID = $session.Matches[0].Value.Replace(' ','')
-        Write-Host "Reset RDP Failture session ID: $ID"      #РѕС‚Р»Р°РґРєР° РїСЂРѕСЃРјРѕС‚СЂ id СЃРµСЃСЃРёРё
-        $session.Line      #РѕС‚Р»Р°РґРєР° РїСЂРѕСЃРјРѕС‚СЂ СЃРµСЃСЃРёРё
-        rwinsta $ID /server:$server            # СЃР±СЂРѕСЃ Р·Р°РІРёСЃС€РёС… СЃРµСЃСЃРёР№, СЂР°СЃРєРѕРјРјРµРЅС‚РёСЂСѓР№С‚Рµ СЌС‚Сѓ СЃС‚СЂРѕРєСѓ
+        Write-Host "Reset RDP Failture session ID: $ID"      #отладка просмотр id сессии
+        $session.Line      #отладка просмотр сессии
+        rwinsta $ID /server:$server            # сброс зависших сессий, раскомментируйте эту строку
     }
 }
  
