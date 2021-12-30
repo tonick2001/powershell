@@ -17,5 +17,6 @@
 
 Set-IISanonymousAuthenticationIdentity -user "./Администратор" -pwd "P@ssw0rd" -iisSiteName "Default Web Site\RDWeb"
 
+
 #get-webconfigurationproperty /system.webServer/security/authentication/anonymousAuthentication   -PSPath "IIS:\Sites\$iisSiteName" -Name Enabled
 #get-webconfigurationproperty /system.webServer/security/authentication/anonymousAuthentication   -PSPath "IIS:\Sites\$iisSiteName" -Name username
