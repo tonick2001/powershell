@@ -73,6 +73,10 @@ catch{
     #remote start script if user session is active on remote server or some process is running
     Invoke-Command -ComputerName $remote_server -ScriptBlock $scriptblock -ArgumentList ($user,$regtype,$regvalue)
 }
+finally{
+    if (Test-Path -Path Registry::HKEY_LOCAL_MACHINE\$pathreg) 
+       {reg unload HKLM\TempHive}
+}
 
 #garbage collector
 [gc]::collect()
