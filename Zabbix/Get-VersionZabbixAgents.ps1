@@ -21,7 +21,7 @@ foreach ($srv in $servers)
 }
 
 Write-Host "Версия Zabbix агента на серверах:"
-$hashtable | ft
+$hashtable | Format-Table -Property @{Label= "Сервер"; Expression={$_.name}},@{Label= "Версия Агента"; Expression={$_.value}} -AutoSize
 
 
 
