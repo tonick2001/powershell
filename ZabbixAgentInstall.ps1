@@ -11,9 +11,9 @@ $namelog = $namelog.split(".")[0]
 $configvalues = @{
     LogFile = "LogFile=c:\zabbix_agent\zabbix_agentd.log"
     EnableRemoteCommands = "EnableRemoteCommands=1"
-    Server = "Server=mgts-zabbixs01.mgts.corp.net"
+    Server = "Server=zabbixs01.xx.net"
     ListenPort = "ListenPort=10050"
-    ServerActive = "ServerActive=mgts-zabbixs01.mgts.corp.net"
+    ServerActive = "ServerActive=zabbixs01.xx.net"
     
     #external
     #UserParameter=tcpcondiscovery,powershell -NoProfile -executionpolicy bypass -File "C:\zabbix_agent\scripts\tcpconDiscover.ps1"
@@ -25,15 +25,8 @@ $configvalues = @{
     #msmqmessagecount='msmqmessagecount[*],powershell -NoProfile -executionpolicy bypass -File "C:\zabbix_agent\scripts\MSMQMessageCount.ps1" "$1"'
 
     #Тэг принадлежности сервера к контуру и системе
-    #HostMetadata="HostMetadata=win.t1.eadr"
-	#HostMetadata="HostMetadata=win.t1.msb"
-    HostMetadata="HostMetadata=win.t1.forisfix"
-    #HostMetadata="HostMetadata=win.t2.wspa"
-    #HostMetadata="HostMetadata=win.t2.wfm"
-    #HostMetadata="HostMetadata=win.t1.wfm"
-    #HostMetadata="HostMetadata=win.t2.forisfix"
-    #HostMetadata="HostMetadata=win.t1.ssrs"
-    
+    HostMetadata="HostMetadata=win.t1.ff"
+     
     
 
 
